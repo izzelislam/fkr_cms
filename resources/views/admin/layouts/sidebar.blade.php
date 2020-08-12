@@ -23,11 +23,11 @@
       'childrens'=>[
         [
           'title'=>'Daftar Category',
-          'url'=>'#',
+          'url'=>'/admin/category',
         ],
         [
           'title'=>'Tambah Category',
-          'url'=>'#',
+          'url'=>'/admin/category/create',
         ],
       ],
     ];
@@ -48,7 +48,13 @@
       ],
     ];
 
-    $menus=[$user,$categories,$article];
+    $dashboard=[
+      'title'=>'Dashboard',
+      'url'=>'/admin',
+      'icon'=>'fas fa-fw fa-tachometer-alt',
+    ];
+
+    $menus=[$dashboard,$user,$categories,$article];
   @endphp
 
 
@@ -64,32 +70,30 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
+
       @foreach ($menus as $index => $menu)
         @if (isset($menu['childrens']))
         
         @php
-          $isActive=false;
+          $isActive =false;
+
           foreach ($menu['childrens'] as $child) {
             if ($child['url'] == $currentpath) {
               $isActive = true;
             }
           }
+
         @endphp
-          <li class="nav-item {{ $isActive ? 'active' :'null' }}">
+          <li class="nav-item {{ $isActive  ? 'active' :'null' }}">
             <a class="nav-link" href="#" data-toggle="collapse" data-target="#menu{{ $index}}" >
               <i class="{{ $menu['icon'] }}"></i>
               <span>{{ $menu['title'] }}</span>
             </a>
-            <div id="menu{{ $index }}" class="collapse {{ $isActive ? 'show' : 'null' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="menu{{ $index }}" class="collapse {{ $isActive  ? 'show' : 'null' }}" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div class="bg-white py-2 collapse-inner rounded">
 
                 @foreach ($menu['childrens'] as $child)
-                  <a class="collapse-item {{ $isActive ? 'active' :'null' }}" href="{{ $child['url'] }}">{{ $child['title'] }}</a>
+                  <a class="collapse-item {{ $child['url'] == $currentpath ? 'active' :'null' }}" href="{{ $child['url'] }}">{{ $child['title'] }}</a>
                 @endforeach
 
               </div>
@@ -97,7 +101,7 @@
           </li> 
 
           @else
-          <li class="nav-item">
+          <li class="nav-item {{ $menu['url'] == $currentpath ? 'active' : 'null' }}">
             <a class="nav-link" href="{{ $menu['url'] }}">
               <i class="{{ $menu['icon'] }}"></i>
               <span>{{ $menu['title'] }}</span></a>
@@ -106,19 +110,10 @@
         @endif
       @endforeach
 
-      <!-- Nav Item - Dashboard -->
-      
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      
-
-      <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
-      <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
     </ul>
-    <!-- End of Sidebar -->
