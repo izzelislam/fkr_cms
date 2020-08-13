@@ -2,18 +2,8 @@
   $currentpath='/'.request()->path();
     $user=[
       'title'=>'User',
-      'url'=>'#',
+      'url'=>'/admin/user',
       'icon'=>'fas fa-user',
-      'childrens'=>[
-        [
-          'title'=>'Daftar User',
-          'url'=>'#',
-        ],
-        [
-          'title'=>'Tambah User',
-          'url'=>'#',
-        ],
-      ],
     ];
 
     $categories=[
@@ -39,11 +29,11 @@
       'childrens'=>[
         [
           'title'=>'Daftar article',
-          'url'=>'#',
+          'url'=>'/admin/article',
         ],
         [
           'title'=>'Tambah Article',
-          'url'=>'#',
+          'url'=>'/admin/article/create',
         ],
       ],
     ];
@@ -54,7 +44,7 @@
       'icon'=>'fas fa-fw fa-tachometer-alt',
     ];
 
-    $menus=[$dashboard,$user,$categories,$article];
+    $menus=[$dashboard,$categories,$article,$user];
   @endphp
 
 
