@@ -17,5 +17,6 @@
 
   <!-- Custom styles for this template-->
   <link href="{{asset('sbadmin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
   @yield('head-script')
 </head>

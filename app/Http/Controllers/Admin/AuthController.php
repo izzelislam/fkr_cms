@@ -36,7 +36,7 @@ class AuthController extends Controller
     	return view('admin.auth.register');
     }
 
-    public function regieterProcces(Request $request)
+    public function registerProcces(Request $request)
     {
     	$passwordencrpt=bcrypt($request->password);
     	$role='author';

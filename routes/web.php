@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 Route::prefix('/admin')->middleware('auth')->namespace('Admin')->name('')->group(function(){
 	Route::resource('/category','CategoryController');
+	Route::resource('/article','ArticleController');
 	Route::get('/','DashboardController@index')->name('admin');
 });
 
