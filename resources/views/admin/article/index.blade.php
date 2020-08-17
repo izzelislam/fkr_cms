@@ -25,21 +25,23 @@
 		                <tr>
 		                  <td>{{ $loop->iteration }}</td>
 		                  <td>{{ $category->title }}</td>
-		                  <td>{{ $category->category_id }}</td>
-		                  <td>{{ $category->user_id }}</td>
-		                  <td>{{ $category->created_at }}</td>
+		                  <td>{{ $category->Category->name }}</td>
+		                  <td>{{ $category->User->name }}</td>
+		                  <td>{{ $category->created_at->format('Y-m-d') }}</td>
 		                  <td>
-		                    <a href="{{ route('category.edit',$category['id'])}}" class="btn btn-warning">Edit</a>
+		                  	<a href="{{ route('article.show',$category->id) }} " class="btn btn-success btn-sm ">View</a>
+		                    <a href="{{ route('article.edit',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
 		                    <form class="d-inline" method="POST" action="{{ route('article.destroy',$category->id) }}">
 		                      @csrf
 		                      @method('DELETE')
-		                        <button class="btn btn-danger">Delete</button>
+		                        <button class="btn btn-danger btn-sm">Delete</button>
 		                    </form>
 		                  </td>
 		                </tr>
 		              @endforeach
 		            </tbody>
 		          </table>
+		         
 		        </div>
 		      </div>
 		    </div>

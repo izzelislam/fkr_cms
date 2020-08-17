@@ -22,7 +22,7 @@
 
                   {{-- start register form --}}
 
-                  <form class="user" method="POST" action="{{ route('registerprocces') }}">
+                  <form class="user" method="POST" action="{{ route('registerprocces') }}" >
                     @csrf
                     <div class="form-group">
                       <input type="text" name="name" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username">

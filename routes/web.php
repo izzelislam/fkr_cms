@@ -2,16 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return view('welcome')->name('login');
-});
-
-
+Route::get('/','FrontPage\AllPostController@post');
 
 Route::prefix('/admin')->middleware('auth')->namespace('Admin')->name('')->group(function(){
 	Route::resource('/category','CategoryController');
 	Route::resource('/article','ArticleController');
+	Route::resource('/user','UserController');
 	Route::get('/','DashboardController@index')->name('admin');
 });
 

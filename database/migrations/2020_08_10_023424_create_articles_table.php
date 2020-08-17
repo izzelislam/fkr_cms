@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->foreignid('category_id');
             $table->string('title');
             $table->text('content');
-            $table->string('image');
+            $table->string('image_file')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
         });

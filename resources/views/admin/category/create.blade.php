@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
 
-      <form method="POST" action="{{ route('category.store') }}">
+      <form method="POST" action="{{ route('category.store') }}" {{-- enctype="multipart/form-data" --}}>
         @csrf
         
           <div class="form-group"><label for="name_category">Nama Category</label>
@@ -22,6 +22,10 @@
               </div>
             @enderror
           </div>
+         {{--  <div>
+            <label>photo</label>
+            <input type="file" name="photo_file" accept="image/*" >
+          </div> --}}
 
           <input type="submit" name="Submit" value="Submit" class="btn btn-primary">
       </form>
