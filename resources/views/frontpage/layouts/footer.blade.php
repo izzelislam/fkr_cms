@@ -8,18 +8,18 @@
 			<div class="col-md-3 pl-5 mt-2">
 				<h5 class="font-weight-bold text-light">Categories</h5>
 				<a href="" class="text-decoration-none text-light">
-					@foreach ($latest as $late)
+				{{-- 	@foreach ($latest as $late)
 						<div><small>{{ $late->Category->name }}</small></div>
 					@endforeach
-				</a>
+				</a> --}}
 			</div>
 			<div class="col-md-3 pl-5 mt-2">
 				<h5 class="font-weight-bold text-light">Lates News</h5>
-				@foreach ($hits as $hit)
+			{{-- 	@foreach ($hits as $hit)
 					<a href="{{ route('readmore',$hit->id) }}" class="text-decoration-none text-light">
 						<div><small>{{ $hit->title }}</small></div>
 					</a>
-				@endforeach
+				@endforeach --}}
 			</div>
 			<div class="col-md-3 pl-5 mt-2">
 				<h5 class="font-weight-bold text-light">Subscribe</h5>
