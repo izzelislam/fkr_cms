@@ -17,8 +17,9 @@ class AllPostController extends Controller
     public function post()
     {
         $hits=$this->model->orderBy('id','desc')->take(4)->get();
+        $latest=$this->model->orderBy('id','desc')->get();
     	$posts=$this->model->all();
-    	return view('main',compact(['posts','hits']));
+    	return view('main',compact(['posts','hits','latest']));
     }
 
     public function readmore($id)

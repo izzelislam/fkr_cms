@@ -12,6 +12,9 @@
 		      		<h2>{{ $article->title }}</h2>
 		      	</div>
 		      	<div>
+		      		<small class="badge badge-danger p-2 my-2">{{ $article->Category->name }}</small>
+		      	</div>
+		      	<div>
 		      		<img src="/img/{{ $article->image_file }}" class="w-50 ">
 		      	</div>
 		      	<div>

@@ -65,10 +65,11 @@
     	</div>
     </div>
     <div class="container my-5">
-    	<div class="text-center"><h3><span class="font-weight-bold">ALL</span><span class="font-weight-bold text-danger">POST</span></h3></div>
-    	<hr>
+    	
     	<div class="row">
     		<div class="col-md-8">
+                <div class="text-center"><h3><span class="font-weight-bold">ALL</span><span class="font-weight-bold text-danger">POST</span></h3></div>
+                <hr>
     			@foreach ($posts as $post)
     				<div class="row mb-3">
     					<div class="col-md-5">
@@ -86,7 +87,43 @@
     				</div>
     			@endforeach
     		</div>
-    		<div class="col-md-4 bg-dark"></div>
+    		<div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-center font-weight-bold">Latest<span class="text-danger">Post</span></h3>
+                        <hr>
+                        @foreach ($latest as $late)
+                            <div class="row mb-3">
+                                <div class="col-md-5">
+                                    <img src="/img/{{ $late->image_file }}" class="w-100">
+                                </div>
+                                <div class="col-md-7">
+                                    <a href="{{ route('readmore',$late->id) }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
+                                    <small class="d-block mb-2">{{ $late->created_at->format('d-M-Y') }}</small>
+                                    <span class=" badge badge-danger p-1">{{ $late->Category->name }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h3 class="text-center font-weight-bold">Cate<span class="text-danger">gories</span></h3>
+                        <hr>
+                        @foreach ($latest as $index=>$late)
+                            <a href="" class="text-decoration-none"><div class="my-1 card-header"><span class="px-2">{{ $index }}</span><span class="font-weight-bold">{{ $late->Category->name }}</span></div></a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h3 class="text-center font-weight-bold">Ta<span class="text-danger">gs</span></h3>
+                        <hr>
+
+                    </div>
+                </div>       
+            </div>
     	</div>
     </div>
     <div class="container my-5">
