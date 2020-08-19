@@ -16,6 +16,7 @@ class ArticleController extends Controller
     }
     public function index()
     {
+        $this->authorize('viewAny',$this->model);
         $articles=$this->model->all();
         return view('admin.article.index',compact('articles'));
     }

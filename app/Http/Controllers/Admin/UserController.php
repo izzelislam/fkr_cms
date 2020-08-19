@@ -15,6 +15,7 @@ class UserController extends Controller
    
     public function index()
     {
+        $this->authorize('viewAny',$this->model);
         $users=$this->model->all();
         return view('admin.User.index',compact('users'));
     }

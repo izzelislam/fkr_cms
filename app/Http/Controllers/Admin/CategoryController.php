@@ -15,6 +15,7 @@ class CategoryController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny',$this->model)
         $categories=$this->model->all();
         return view('admin.category.index',compact('categories'));
     }
