@@ -24,12 +24,6 @@ class UserController extends Controller
         return view('admin.auth.register');
     }
 
-   
-    public function store(Request $request)
-    {
-        //
-    }
-
   
     public function show($id)
     {
@@ -40,18 +34,23 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $user=$this->model->find($id);
+        return view('admin.User.edit',compact('user'));
     }
 
  
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+       $user=$this->model->find($id);
+       $request->merge(['password'=>$user->password]);
+       $user->update($request->all());
+       return redirect()->route('user.index');
     }
 
    
     public function destroy($id)
     {
-        //
+        $this->model->find($id)->delete();
+        return redirect()->route('user.index');
     }
 }

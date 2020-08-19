@@ -24,8 +24,9 @@ class AllPostController extends Controller
 
     public function readmore($id)
     {
+        $latest=$this->model->orderBy('id','desc')->get();
         $comments=Comment::all()->where('article_id',$id);
     	$post=$this->model->find($id);
-    	return view('frontpage.post.show',compact(['post','comments']));
+    	return view('frontpage.post.show',compact(['post','comments','latest']));
     }
 }

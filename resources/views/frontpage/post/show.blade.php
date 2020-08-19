@@ -49,6 +49,25 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <h3 class="text-center font-weight-bold">Latest<span class="text-danger">Post</span></h3>
+                <hr>
+                @foreach ($latest as $late)
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <img src="/img/{{ $late->image_file }}" class="w-100">
+                        </div>
+                        <div class="col-md-7">
+                            <a href="{{ route('readmore',$late->id) }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
+                            <small class="d-block mb-2">{{ $late->created_at->format('d-M-Y') }}</small>
+                            <span class=" badge badge-danger p-1">{{ $late->Category->name }}</span>
+                        </div>
+                    </div>
+                @endforeach
+                <div class="my-5">
+                    <img src="https://www.bagas31.info/wp-content/uploads/2020/06/netfree-gratis-min-1.png">
+                </div>
+            </div>
         </div>
         <h4>Related Post</h4>
         <div class="row">

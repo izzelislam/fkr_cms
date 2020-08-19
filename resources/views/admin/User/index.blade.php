@@ -29,8 +29,8 @@
                       <td>{{ $category->email }}</td>
                       <td>{{ $category->role }}</td>
                       <td>
-                        <a href="{{ route('category.edit',$category['id'])}}" class="btn btn-warning">Edit</a>
-                        <form class="d-inline" method="POST" action="{{ route('category.destroy',$category->id) }}">
+                        <a href="{{ route('user.edit',$category->id)}}" class="btn btn-warning">Edit</a>
+                        <form class="d-inline" method="POST" action="{{ route('user.destroy',$category->id) }}">
                           @csrf
                           @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
