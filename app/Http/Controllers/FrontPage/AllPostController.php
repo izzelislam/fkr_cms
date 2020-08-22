@@ -27,7 +27,7 @@ class AllPostController extends Controller
     {
 
         $latest=$this->model->orderBy('id','desc')->get();
-        $comments=Comment::all()->where('article_id',$id);
+        $comments=Comment::orderBy('created_at','desc')->where('article_id',$id)->get();
     	$post=$this->model->find($id);
     	return view('frontpage.post.show',compact(['post','comments','latest']));
     }
