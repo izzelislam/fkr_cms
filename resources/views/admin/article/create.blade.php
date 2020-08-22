@@ -2,6 +2,10 @@
 
 @section('title','Tambah Article')
 
+@section('head-script')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+@endsection
+
 @section('content')
  @section('title','Tambah Article')
 
@@ -70,12 +74,32 @@
             @enderror
           </div>
 
+          <div class="form-group"><label for="name_category">Tag</label>
+            <div class="form-group">
+              <select name="tag[]" multiple="multiple" class="form-control select-tag @error('category_id') is-invalid @enderror" id="exampleFormControlSelect1">
+                @foreach ($tags as $tag)
+                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            @error ('category_id')
+              <div class="invalid-feedback">
+                {{$message}}
+              </div>
+            @enderror
+          </div>
 
           <input type="submit" name="Submit" value="Submit" class="btn btn-primary mt-5">
       </form>
 
     </div>
   </div>
+
+@endsection
+
+@section('end-script')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/21.0.0/classic/ckeditor.js"></script>
 
   <script>
     ClassicEditor
@@ -87,5 +111,15 @@
      .catch( error => {
         console.error( error );
      } );
+
   </script>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $(".select-tag").select2({
+            tags: true
+          });
+      });
+  </script>
+
 @endsection

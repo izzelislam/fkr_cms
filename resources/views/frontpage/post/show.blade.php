@@ -17,6 +17,15 @@
                         puplised : {{ $post->created_at->format('d-M-Y') }}
                     </div>
                 </div>
+                
+                <div class="my-4">
+                    <div><h4 class="font-weight-bold">Tags</h4><hr></div>
+                    <div>
+                        @foreach ($post->Tag as $ta)
+                            <span class="badge badge-dark p-3 mx-1">{{ $ta->name }}</span>
+                        @endforeach
+                    </div>
+                </div>
                 <hr class="mt-5">
                <h4 class="font-weight-bold"> komentar</h4>
                 <hr>

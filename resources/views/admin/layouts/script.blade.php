@@ -9,7 +9,6 @@
   <!-- Custom scripts for all pages-->
   <script src="{{asset('sbadmin/js/sb-admin-2.min.js')}}"></script>
   @yield('end-script')
-  @yield('end-script')
 </body>
 
 </html>

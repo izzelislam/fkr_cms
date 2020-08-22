@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\Tag;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -17,7 +19,13 @@ class ArticleController extends Controller
     public function index()
     {
         $this->authorize('viewAny',$this->model);
-        $articles=$this->model->all();
+
+        if ( auth()->user()->role == 'author') {
+            $articles=$this->model->where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(10);
+        }else{
+            $articles=$this->model->orderBy('created_at','desc')->paginate(10);
+        }
+
         return view('admin.article.index',compact('articles'));
     }
 
@@ -25,12 +33,14 @@ class ArticleController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('admin.article.create',compact('categories'));
+        $tags=Tag::all();
+        return view('admin.article.create',compact('categories','tags'));
     }
 
    
     public function store(Request $request)
     {
+        // dd( $request->tag);
 
         $user_id=auth()->user()->id;
         
@@ -41,15 +51,25 @@ class ArticleController extends Controller
             'image_file'=>'required',
             'slug'=>'required'
         ]);
-        $this->model->create([
+        $article=$this->model->create([
             'user_id'=>$user_id,
             'category_id'=>$request->category_id,
             'title'=>$request->title,
             'content'=>$request->content,
             'image_file'=>$this->uploadImage($request),
-            'slug'=>$request->slug,
-        ])->save();    
-        // $this->model->create($request->all());
+            'slug'=>Str::slug($request->slug,'-'),
+        ]);
+        $article->save();
+
+        if ($article) {
+            $tagnames=$request->tag;
+            foreach ($tagnames as $tagname) {
+                $tag=Tag::firstOrCreate(['name' => $tagname]);
+            }
+            $nano = Tag::whereIn('name',$tagnames)->get()->pluck('id');
+            $article->Tag()->sync($nano);    
+        }
+
         return redirect()->route('article.index');
     }
 
@@ -65,7 +85,8 @@ class ArticleController extends Controller
     {
         $article=$this->model->find($id);
         $categories=Category::all();
-        return view('admin.article.edit',compact('article','categories'));
+        $tags=Tag::all();
+        return view('admin.article.edit',compact('article','categories','tags'));
     }
 
    
@@ -82,11 +103,11 @@ class ArticleController extends Controller
             $article->title=$request->title;
             $article->content=$request->content;
             $article->image_file=$this->uploadImage($request);
-            $article->slug=$request->slug;
+            $article->slug=Str::slug($request->slug);
 
+            $this->handleTag($request,$article);
             $article->save();
             
-
         return redirect()->route('article.index');
     }
 
@@ -116,5 +137,15 @@ class ArticleController extends Controller
         if ($img && file_exists($fullPath)) {
             unlink($fullPath);
         }
+    }
+
+    public function handleTag(Request $request, Article $article)
+    {
+        $tagnames=$request->tag;
+        foreach ($tagnames as $tagname) {
+            Tag::firstOrCreate(['name'=>$tagname])->save();
+        }
+        $tags = Tag::whereIn('name', $tagnames)->get()->pluck('id');
+        $article->Tag()->sync($tags);
     }
 }

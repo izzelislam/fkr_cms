@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Model\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -11,6 +12,29 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Category::truncate();
+
+        Category::create(
+        	[
+        		'name'=>'Politik'
+        	]
+        );
+
+         Category::create(
+            [
+                'name'=>'Helaty'
+            ]   
+        );
+          
+          Category::create(     
+            [
+                'name'=>'Sport'
+            ]
+        );
+           Category::create(
+            [
+                'name'=>'Food'
+            ]
+        );
     }
 }

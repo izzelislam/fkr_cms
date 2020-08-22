@@ -13,10 +13,10 @@ class CreateArticleTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_tag_', function (Blueprint $table) {
+        Schema::create('article_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('article_id');
-            $table->foreignid('tag_id');
+            $table->foreignId('article_id');
+            $table->foreignId('tag_id');
             $table->timestamps();
         });
     }

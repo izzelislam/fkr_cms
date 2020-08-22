@@ -77,7 +77,7 @@
     					</div>
     					<div class="col-md-6">
     						<div>
-    							<h5 class="font-weight-bold"><a href="{{ route('readmore',$post->id) }}" class="text-decoration-none">{{ $post->title }}</a></h5>
+    							<h5 class="font-weight-bold"><a href="{{ route('readmore',['id'=>$post->id]) }}" class="text-decoration-none">{{ $post->title }}</a></h5>
     							<span>penulis : {{ $post->User->name }}</span>
     							<h5>{{ $post->created_at->format('Y-m-d') }}</h5>
     							<span class="badge badge-sm badge-danger">{{ $post->Category->name }}</span>
@@ -86,6 +86,7 @@
     					</div>
     				</div>
     			@endforeach
+            <div class="float-right">{{ $posts->links() }}</div>
     		</div>
     		<div class="col-md-4">
                 <div class="row">

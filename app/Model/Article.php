@@ -22,4 +22,9 @@ class Article extends Model
     {
     	return $this->hasmany('App\Model\Comment');
     }
+
+    public function Tag()
+    {
+        return $this->belongsToMany('App\Model\Tag');
+    }
 }

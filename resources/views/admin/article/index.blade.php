@@ -41,7 +41,7 @@
 		              @endforeach
 		            </tbody>
 		          </table>
-		         
+		         <div class="float-right">{{ $articles->links() }}</div>
 		        </div>
 		      </div>
 		    </div>

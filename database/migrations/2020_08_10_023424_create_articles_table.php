@@ -15,8 +15,8 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->foreignid('user_id');
-            $table->foreignid('category_id');
+            $table->foreignId('user_id');
+            $table->foreignId('category_id');
             $table->string('title');
             $table->text('content');
             $table->string('image_file')->nullable();

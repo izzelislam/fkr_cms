@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Article;
 use App\Model\Comment;
+use APp\Model\Tag;
 
 class AllPostController extends Controller
 {
@@ -18,12 +19,13 @@ class AllPostController extends Controller
     {
         $hits=$this->model->orderBy('id','desc')->take(4)->get();
         $latest=$this->model->orderBy('id','desc')->get();
-    	$posts=$this->model->all();
+    	$posts=$this->model->orderBy('created_at','desc')->paginate(10);
     	return view('main',compact(['posts','hits','latest']));
     }
 
     public function readmore($id)
     {
+
         $latest=$this->model->orderBy('id','desc')->get();
         $comments=Comment::all()->where('article_id',$id);
     	$post=$this->model->find($id);
