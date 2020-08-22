@@ -58,7 +58,7 @@
               <label for="exampleFormControlFile1">Image</label>
               <input type="file" class="form-control-file" name="image_file" id="exampleFormControlFile1" accept="image/*" value="{{ $article->image_file }}">
               
-              @error ('image')
+              @error ('image_file')
                 <div class="invalid-feedback">
                   {{$message}}
                 </div>
@@ -77,13 +77,13 @@
 
           <div class="form-group"><label for="name_category">Tag</label>
             <div class="form-group">
-              <select name="tag[]" multiple="multiple" class="form-control select-tag @error('category_id') is-invalid @enderror" id="exampleFormControlSelect1">
+              <select name="tag[]" multiple="multiple" class="form-control select-tag @error('tag') is-invalid @enderror" id="exampleFormControlSelect1">
                 @foreach ($tags as $index=>$tag)
                  <option {{ $article->Tag()->pluck('tag_id')->contains($tag->id) ? 'selected': '' }} >{{ $tag['name']}}</option>
                 @endforeach
               </select>
             </div>
-            @error ('category_id')
+            @error ('tag')
               <div class="invalid-feedback">
                 {{$message}}
               </div>

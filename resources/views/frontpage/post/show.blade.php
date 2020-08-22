@@ -67,7 +67,7 @@
                             <img src="/img/{{ $late->image_file }}" class="w-100">
                         </div>
                         <div class="col-md-7">
-                            <a href="{{ route('readmore',$late->id) }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
+                            <a href="/readmore/{{ $late->id }}/{{ $late->slug }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
                             <small class="d-block mb-2">{{ $late->created_at->format('d-M-Y') }}</small>
                             <span class=" badge badge-danger p-1">{{ $late->Category->name }}</span>
                         </div>

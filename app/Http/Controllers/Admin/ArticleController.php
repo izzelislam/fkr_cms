@@ -49,7 +49,8 @@ class ArticleController extends Controller
             'title'=>'required',
             'content'=>'required',
             'image_file'=>'required',
-            'slug'=>'required'
+            'slug'=>'required',
+            'tag'=>'required'
         ]);
         $article=$this->model->create([
             'user_id'=>$user_id,
@@ -92,6 +93,15 @@ class ArticleController extends Controller
    
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'category_id'=>'required',
+            'title'=>'required',
+            'content'=>'required',
+            'image_file'=>'required',
+            'slug'=>'required',
+            'tag'=>'required'
+        ]);
+        
         $article=$this->model->find($id);
         if ($request->image_file) {
             $this->removeImage($article->image_file);

@@ -23,7 +23,7 @@ class AllPostController extends Controller
     	return view('main',compact(['posts','hits','latest']));
     }
 
-    public function readmore($id)
+    public function readmore($id,$slug)
     {
 
         $latest=$this->model->orderBy('id','desc')->get();

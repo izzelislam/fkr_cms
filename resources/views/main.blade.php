@@ -14,7 +14,7 @@
     			    	  <div style="position: absolute;top:60%;bottom:50%;right:10%;left:10%;">
     			    	  	<div class="badge badge-lg badge-danger p-2">{{ $post->Category->name }}</div>
     			    	  	<div class="text-light my-3">{{ $post->created_at->format('Y-m-d') }}<span class="mx-2">|</span>{{ $post->User->name }}</div>
-    			    	  	<a class="text-decoration-none" href="{{ route('readmore',$post->id) }}">
+    			    	  	<a class="text-decoration-none" href="/readmore/{{ $post->id }}/{{ $post->slug }}">
                                 <h4 class="font-weight-bold text-light">
                                     {{ $post->title }}
                                 </h4>             
@@ -40,7 +40,7 @@
                             <img src="/img/{{ $hit->image_file }}" class="w-100">
                         </div>
                         <div class="col-md-7">
-                            <a href="{{ route('readmore',$hit->id) }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $hit->title }}</small></span></a>
+                            <a href="/readmore/{{ $hit->id }}/{{ $hit->slug }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $hit->title }}</small></span></a>
                             <small class="d-block mb-2">{{ $hit->created_at->format('d-M-Y') }}</small>
                             <span class=" badge badge-danger p-1">{{ $hit->Category->name }}</span>
                         </div>
@@ -77,7 +77,7 @@
     					</div>
     					<div class="col-md-6">
     						<div>
-    							<h5 class="font-weight-bold"><a href="{{ route('readmore',['id'=>$post->id]) }}" class="text-decoration-none">{{ $post->title }}</a></h5>
+    							<h5 class="font-weight-bold"><a href="/readmore/{{ $post->id }}/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a></h5>
     							<span>penulis : {{ $post->User->name }}</span>
     							<h5>{{ $post->created_at->format('Y-m-d') }}</h5>
     							<span class="badge badge-sm badge-danger">{{ $post->Category->name }}</span>
@@ -99,7 +99,7 @@
                                     <img src="/img/{{ $late->image_file }}" class="w-100">
                                 </div>
                                 <div class="col-md-7">
-                                    <a href="{{ route('readmore',$late->id) }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
+                                    <a href="/readmore/{{ $late->id }}/{{ $late->slug }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
                                     <small class="d-block mb-2">{{ $late->created_at->format('d-M-Y') }}</small>
                                     <span class=" badge badge-danger p-1">{{ $late->Category->name }}</span>
                                 </div>

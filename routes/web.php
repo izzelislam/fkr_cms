@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','FrontPage\AllPostController@post')->name('index');
-Route::get('/readmore/{id}','FrontPage\AllPostController@readmore')->name('readmore');
+Route::get('/readmore/{id}/{slug}','FrontPage\AllPostController@readmore')->name('readmore');
 Route::get('/koentar','FrontPage\CommentController@index')->name('comment.index');
 Route::get('/koentar/{id}','FrontPage\CommentController@store')->name('comment.store');
 
