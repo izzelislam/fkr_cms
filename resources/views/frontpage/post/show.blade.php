@@ -13,7 +13,7 @@
                 <div>
                     <div class="card p-3">
                         <img src="/img/{{ $post->image_file }}" style="width: 99.5%;">
-                        <h1 class="font-weight-bold my-2">{{ $post->title }}</h1>
+                        <h2 class="font-weight-bold my-4">{{ $post->title }}</h2>
                         <div class="mb-4">category : <span class="badge badge-danger p-2">{{ $post->Category->name }}</span></div>
                         <div class="my-3 " style="line-height:  1.8; text-align: justify;">
                             {!! $post->content !!}
