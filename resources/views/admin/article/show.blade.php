@@ -23,10 +23,10 @@
 		      		</p>
 		      	</div>
 		      	<div>
-		      		Penulis : {{ $article->User->name }}
+		      		<span class="mr-3"><i class="fas fa-user-alt mr-2" ></i> {{ $article->User->name }}</span>
 		      	</div>
 		      	<div>
-		      		Tanggal : {{ $article->created_at }}
+		      		<span><i class="fas fa-calendar mr-2"></i>{{ $article->created_at->format('d-M-Y') }}</span>
 		      	</div>
 				
 				<div class="my-5">
@@ -37,3 +37,4 @@
 		    </div>
 		</div>
 @endsection
+

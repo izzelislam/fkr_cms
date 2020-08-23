@@ -13,17 +13,20 @@
                 <div>
                     <div class="card p-3">
                         <img src="/img/{{ $post->image_file }}" style="width: 99.5%;">
-                        <h2 class="font-weight-bold my-4">{{ $post->title }}</h2>
-                        <div class="mb-4">category : <span class="badge badge-danger p-2">{{ $post->Category->name }}</span></div>
-                        <div class="my-3 " style="line-height:  1.8; text-align: justify;">
-                            {!! $post->content !!}
-                        </div>
-                        <div class="float-right my-2">
-                            <span class="mr-4"><i class="fas fa-comment-alt"></i><small class="ml-2">{{ $comments->count() }}</small></span> 
-                            <span class="mr-4"><i class="fas fa-eye"></i><small class="ml-2">{{ $post->views }}</small></span> 
-                            <span class="mr-4"><i class="fas fa-user-alt"></i><small class="ml-2">{{ $post->User->name }}</small></span> 
-                            <span><i class="fas fa-calendar"></i><small class="ml-2">{{ $post->created_at->format('d-M-Y') }}</small></span>
-                        </div>
+               
+                          <h2 class="font-weight-bold my-4">{{ $post->title }}</h2>
+                          <div class="mb-4">category : <span class="badge badge-danger p-2">{{ $post->Category->name }}</span></div>
+                          <div class="my-3 " style="line-height:  1.8; text-align: justify;">
+                              {!! $post->content !!}
+                          </div>
+                          <div class="my-4">
+                              <span class="mr-4"><i class="fas fa-comment-alt"></i><small class="ml-2">{{ $comments->count() }}</small></span> 
+                              <span class="mr-4"><i class="fas fa-eye"></i><small class="ml-2">{{ $post->views }}</small></span> 
+                              <span class="mr-4"><i class="fas fa-user-alt"></i><small class="ml-2">{{ $post->User->name }}</small></span> 
+                              <span class="mr-4"><i class="fas fa-calendar"></i><small class="ml-2">{{ $post->created_at->format('d-M-Y') }}</small></span>
+                              <span class="mr-4"><a href="#" class="text-decoration-none text-dark"><i class="fas fa-share"></i><small class="ml-2">share</small></a></span>
+                          </div>
+
                     </div>
                 </div>
                 
