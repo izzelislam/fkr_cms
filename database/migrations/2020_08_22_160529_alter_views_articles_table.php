@@ -10,12 +10,12 @@ class AlterViewsArticlesTable extends Migration
     public function up()
     {
        Schema::table('articles', function (Blueprint $table) {
-           $table->integer('views')->nullable();
+           $table->integer('views')->default(0);
        });
     }
 
     public function down()
     {
-        //
+        
     }
 }

@@ -76,7 +76,7 @@
                 <div class="text-center"><h3><span class="font-weight-bold">ALL</span><span class="font-weight-bold text-danger">POST</span></h3></div>
                 <hr>
     			@foreach ($posts as $post)
-    				<div class="row mb-3">
+    				<div class="row mb-4">
     					<div class="col-md-5">
     						<img src="/img/{{ $post->image_file }}" style="width:100%;height:180px;">
     					</div>

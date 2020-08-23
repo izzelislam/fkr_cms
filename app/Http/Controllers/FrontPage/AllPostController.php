@@ -17,7 +17,7 @@ class AllPostController extends Controller
 
     public function post()
     {
-        $hits=$this->model->orderBy('id','desc')->take(5)->get();
+        $hits=$this->model->orderBy('id','desc')->take(4)->get();
         $latest=$this->model->orderBy('id','desc')->take(5)->get();
     	$posts=$this->model->orderBy('created_at','desc')->paginate(10);
         $popular=$this->model->orderBy('views','desc')->take(5)->get();
