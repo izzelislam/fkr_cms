@@ -17,8 +17,14 @@
     			    	  <img src="/img/{{ $post->image_file }}" class="d-block w-100" alt="...">
     			    	  <div style="position: absolute;top:0;bottom:0;left:0;right:0;background-color:black;opacity:0.6;"></div>
     			    	  <div style="position: absolute;top:60%;bottom:50%;right:10%;left:10%;">
-    			    	  	<div class="badge badge-lg badge-danger p-2">{{ $post->Category->name }}</div>
-    			    	  	<div class="text-light my-3">{{ $post->created_at->format('Y-m-d') }}<span class="mx-2">|</span>{{ $post->User->name }}</div>
+    			    	  	<span class="badge badge-lg badge-danger p-2 mr-2">{{ $post->Category->name }}</span>
+                            <span class="badge badge-lg badge-danger p-2">Poppular News</span>
+    			    	  	<div class="text-light my-3">
+                                <span class="mr-3"><i class="fas fa-user-alt mr-2" ></i><small>{{ $post->User->name }}</small></span>
+                                <span class="mr-3"><i class="fas fa-calendar mr-2"></i><small>{{ $post->created_at->format('d-M-Y') }}</small></span>
+                                <span class="mr-3"><i class="fas fa-eye mr-2" ></i><small>{{ $post->views }}</small></span>
+
+                            </div>
     			    	  	<a class="text-decoration-none" href="/readmore/{{ $post->id }}/{{ $post->slug }}">
                                 <h4 class="font-weight-bold text-light">
                                     {{ $post->title }}
@@ -76,7 +82,7 @@
                 <div class="text-center"><h3><span class="font-weight-bold">ALL</span><span class="font-weight-bold text-danger">POST</span></h3></div>
                 <hr>
     			@foreach ($posts as $post)
-    				<div class="row mb-4">
+    				<div class="row mb-5">
     					<div class="col-md-5">
     						<img src="/img/{{ $post->image_file }}" style="width:100%;height:180px;">
     					</div>
@@ -87,8 +93,10 @@
     							<span><i class="fas fa-calendar mr-2"></i>{{ $post->created_at->format('d-M-Y') }}</span>
                                 <br>
     							<div class="badge badge-sm badge-danger">{{ $post->Category->name }}</div>
+                                <div>
+                                    <h6 class="my-2" style="font-size:11pt;">{!! \Illuminate\Support\Str::limit($post->content,100, $end='.' )!!}<a href="/readmore/{{ $post->id }}/{{ $post->slug }}">readmore</a></h6>
+                                </div>
     						</div>
-    						<hr>
     					</div>
     				</div>
     			@endforeach
@@ -153,20 +161,6 @@
             </div>
     	</div>
     </div>
-    <div class="container my-5">
-        <div class="text-center"><h3><span class="font-weight-bold">CATE</span><span class="font-weight-bold text-danger">GORIES</span></h3></div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12 d-flex justify-content-between">
-                
-                @foreach ($posts as $post)
-                    <div class="card" style="width: 100%; margin:10px; ">
-                      <img class="card-img-top" src="/img/{{ $post->image_file }}" alt="Card image cap">
-                    </div>
-                @endforeach
 
-            </div>
-        </div>
-    </div>
     @include('frontpage.layouts.footer')
 @endsection

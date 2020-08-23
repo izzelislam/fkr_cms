@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/','FrontPage\AllPostController@post')->name('index');
+Route::get('/news','FrontPage\AllPostController@news')->name('news');
+Route::get('/politic','FrontPage\AllPostController@politic')->name('politic');
+Route::get('/sport','FrontPage\AllPostController@sport')->name('sport');
+Route::get('/healty','FrontPage\AllPostController@healty')->name('healty');
 Route::get('/readmore/{id}/{slug}','FrontPage\AllPostController@readmore')->name('readmore');
 Route::get('/koentar','FrontPage\CommentController@index')->name('comment.index');
 Route::get('/koentar/{id}','FrontPage\CommentController@store')->name('comment.store');

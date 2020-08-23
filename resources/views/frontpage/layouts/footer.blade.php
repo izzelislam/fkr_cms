@@ -5,25 +5,25 @@
 				<h1 class="font-weight-bold text-light">NEW<span class="text-danger">S.ui</span></h1>
 				<span class="text-light font-weight-bold" style="letter-spacing: 2.5px;">www.newsui.com</span>
 			</div>
-			<div class="col-md-3 pl-5 mt-2">
-				<h5 class="font-weight-bold text-light">Categories</h5>
-				<a href="" class="text-decoration-none text-light">
-				{{-- 	@foreach ($latest as $late)
-						<div><small>{{ $late->Category->name }}</small></div>
+			<div class="col-md-3 mt-2">
+				<h5 class="font-weight-bold text-light mb-4">Categories</h5>
+					@foreach ($categories as $category)
+						<h6 class="d-block my-2 text-light font-weight-bold">{{ $category->name }}</h6>
 					@endforeach
-				</a> --}}
 			</div>
-			<div class="col-md-3 pl-5 mt-2">
-				<h5 class="font-weight-bold text-light">Lates News</h5>
-			{{-- 	@foreach ($hits as $hit)
-					<a href="{{ route('readmore',$hit->id) }}" class="text-decoration-none text-light">
-						<div><small>{{ $hit->title }}</small></div>
-					</a>
-				@endforeach --}}
+			<div class="col-md-3 mt-2">
+				<h5 class="font-weight-bold text-light mb-2">Popular News</h5>
+				@foreach ($popular as $pop)
+					<a href="/readmore/{{ $pop->id }}/{{ $pop->slug }}" class="d-block my-2 text-decoration-underline-light"><small class="text-light">{{ \Illuminate\Support\Str::limit($pop->title,50,$end='.') }}</small></a>
+				@endforeach
 			</div>
-			<div class="col-md-3 pl-5 mt-2">
+			<div class="col-md-3 mt-2">
 				<h5 class="font-weight-bold text-light">Subscribe</h5>
-				<a href="" class="text-decoration-none text-light"><small>Sport</small></a>
+				<form class="d-inline">
+				      <label for="inputEmail4" class="text-light">Email</label><br>
+				      <input type="email" name=""> 
+				  	  <button type="submit" class="btn btn-sm my-3 btn-light">submit</button>
+				</form>
 			</div>
 		</div>
 	</div>
