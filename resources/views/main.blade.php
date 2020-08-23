@@ -1,5 +1,10 @@
 @extends('frontpage.layouts.app')
 @section('title','front')
+
+@section('head-script')
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+@endsection
+
 @section('content')
     @include('frontpage.layouts.navbar')
     <div class="container mt-5">
@@ -7,7 +12,7 @@
     		<div class="col-md-8">
     			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     			  <div class="carousel-inner">
-    			    @foreach ($posts as $index=>$post)
+    			    @foreach ($popular as $index=>$post)
     			    	<div class="carousel-item {{ $index == $post->index ? 'active' : '' }}" style="position: relative;">
     			    	  <img src="/img/{{ $post->image_file }}" class="d-block w-100" alt="...">
     			    	  <div style="position: absolute;top:0;bottom:0;left:0;right:0;background-color:black;opacity:0.6;"></div>
@@ -55,7 +60,7 @@
     	<div class="row">
     		<div class="col-md-12 d-flex justify-content-between">
     			
-                @foreach ($posts as $post)
+                @foreach ($politic as $post)
                     <div class="card" style="width: 100%; margin:10px; ">
                       <img class="card-img-top" src="/img/{{ $post->image_file }}" alt="Card image cap">
                     </div>
@@ -78,9 +83,10 @@
     					<div class="col-md-6">
     						<div>
     							<h5 class="font-weight-bold"><a href="/readmore/{{ $post->id }}/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a></h5>
-    							<span>penulis : {{ $post->User->name }}</span>
-    							<h5>{{ $post->created_at->format('Y-m-d') }}</h5>
-    							<span class="badge badge-sm badge-danger">{{ $post->Category->name }}</span>
+    							<span class="mr-3"><i class="fas fa-user-alt mr-2" ></i> {{ $post->User->name }}</span>
+    							<span><i class="fas fa-calendar mr-2"></i>{{ $post->created_at->format('d-M-Y') }}</span>
+                                <br>
+    							<div class="badge badge-sm badge-danger">{{ $post->Category->name }}</div>
     						</div>
     						<hr>
     					</div>
@@ -107,6 +113,26 @@
                         @endforeach
                     </div>
                 </div>
+
+                <div class="row my-5">
+                    <div class="col-md-12">
+                        <h3 class="text-center font-weight-bold">Popular<span class="text-danger">Post</span></h3>
+                        <hr>
+                        @foreach ($popular as $late)
+                            <div class="row mb-3">
+                                <div class="col-md-5">
+                                    <img src="/img/{{ $late->image_file }}" class="w-100">
+                                </div>
+                                <div class="col-md-7">
+                                    <a href="/readmore/{{ $late->id }}/{{ $late->slug }}" class="text-decoration-none"><span class="font-weight-bold"><small>{{ $late->title }}</small></span></a>
+                                    <small class="d-block mb-2">{{ $late->created_at->format('d-M-Y') }}</small>
+                                    <span class=" badge badge-danger p-1">{{ $late->Category->name }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <h3 class="text-center font-weight-bold">Cate<span class="text-danger">gories</span></h3>

@@ -4,46 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Article;
+use App\Model\Category;
+use App\Model\User;
+use App\Model\Comment;
 
 class DashboardController extends Controller
 {
    
     public function index()
     {
-        return view('.admin.index');
+        $article=Article::all();
+        $category=Category::all();
+        $user=User::all();
+        $comment=Comment::all();
+        return view('.admin.index',compact('article','category','user','comment'));
     }
 
-   
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-  
-    public function show($id)
-    {
-        //
-    }
-
-   
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-   
-    public function destroy($id)
-    {
-        //
-    }
 }

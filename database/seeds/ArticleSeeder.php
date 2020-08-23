@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Model\Article;
+use Illuminate\Support\Str;
 
 class ArticleSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class ArticleSeeder extends Seeder
         		'title'=>'HUT Kemerdekaan ke-75 dan Upaya Merawat Pancasila sebagai Ideologi Bangsa',
         		'content'=>'KOMPAS.com – Sudah 75 tahun lamanya Bung Karno dan Bung Hatta memproklamasikan kemerdekaan bangsa Indonesia. Tentu tak hanya kedua tokoh ini yang punya peran penting dalam meraih kemerdekaan bangsa, tetapi juga perjuangan tanpa henti dari para pahlawan dan pendiri bangsa lain. Selain itu, proklamasi kemerdekaan Indonesia juga bukan merupakan peristiwa yang terjadi secara tiba-tiba. Ada suatu proses panjang kemerdekaan yang salah satu prosesnya adalah penentuan dasar negara untuk mengawal Indonesia pasca merdeka. Wakil Ketua MPR RI Achmad Basarah mengatakan, pada momentum itulah para pendiri bangsa melakukan pertemuan di sidang Badan Penyelidik Usaha-usaha Persiapan Kemerdekaan Indonesia (BPUPKI) untuk menentukan dasar negara',
         		'image_file'=>'',
-        		'slug'=>'HUT Kemerdekaan ke-75 dan Upaya Merawat Pancasila sebagai Ideologi Bangsa',
+        		'slug'=>Str::slug('HUT Kemerdekaan ke-75 dan Upaya Merawat Pancasila sebagai Ideologi Bangsa'),
         	]
         );
 		
