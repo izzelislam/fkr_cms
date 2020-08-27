@@ -66,15 +66,6 @@
 
           </div>          
 
-          <div class="form-group"><label for="name_category">Slug</label>
-            <input class="form-control @error('slug') is-invalid @enderror" id="name_category" name="slug" type="text" placeholder="politic" value="{{ $article->slug }}">
-            @error ('slug')
-              <div class="invalid-feedback">
-                {{$message}}
-              </div>
-            @enderror
-          </div>
-
           <div class="form-group"><label for="name_category">Tag</label>
             <div class="form-group">
               <select name="tag[]" multiple="multiple" class="form-control select-tag @error('tag') is-invalid @enderror" id="exampleFormControlSelect1">

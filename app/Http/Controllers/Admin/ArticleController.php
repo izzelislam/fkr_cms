@@ -49,7 +49,6 @@ class ArticleController extends Controller
             'title'=>'required',
             'content'=>'required',
             'image_file'=>'required',
-            'slug'=>'required',
             'tag'=>'required'
         ]);
         $article=$this->model->create([
@@ -58,7 +57,7 @@ class ArticleController extends Controller
             'title'=>$request->title,
             'content'=>$request->content,
             'image_file'=>$this->uploadImage($request),
-            'slug'=>Str::slug($request->slug,'-'),
+            'slug'=>Str::slug($request->title,'-'),
         ]);
         $article->save();
 
@@ -98,7 +97,6 @@ class ArticleController extends Controller
             'title'=>'required',
             'content'=>'required',
             'image_file'=>'required',
-            'slug'=>'required',
             'tag'=>'required'
         ]);
         
@@ -113,7 +111,7 @@ class ArticleController extends Controller
             $article->title=$request->title;
             $article->content=$request->content;
             $article->image_file=$this->uploadImage($request);
-            $article->slug=Str::slug($request->slug);
+            $article->slug=Str::slug($request->title);
 
             $this->handleTag($request,$article);
             $article->save();
@@ -158,4 +156,5 @@ class ArticleController extends Controller
         $tags = Tag::whereIn('name', $tagnames)->get()->pluck('id');
         $article->Tag()->sync($tags);
     }
+
 }

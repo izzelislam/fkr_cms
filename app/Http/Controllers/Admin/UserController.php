@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Use App\Model\User;
+use App\Model\Article;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -51,7 +53,27 @@ class UserController extends Controller
    
     public function destroy($id)
     {
-        $this->model->find($id)->delete();
+        $user=$this->model->find($id);
+
+        if ($user->role == 'author') {
+            $articles=Article::where('user_id',$id)->get();
+            $defalultUser=$this->model->where('role','admin')->pluck('id');
+            $du=$defalultUser->first();
+
+            foreach ($articles as $article) {
+                $article->user_id=$du;
+                $article->category_id=$article->category_id;
+                $article->title=$article->title;
+                $article->content=$article->content;
+                $article->image_file=$article->image_file;
+                $article->slug=Str::slug($article->title);
+
+                $article->save();
+            }
+        }
+
+        $user->delete();
+
         return redirect()->route('user.index');
     }
 }

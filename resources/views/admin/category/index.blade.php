@@ -25,11 +25,11 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $category->name }}</td>
                       <td>
-                        <a href="{{ route('category.edit',$category['id'])}}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('category.edit',$category['id'])}}" class="btn btn-warning {{ $category->name =='Uncategorized' ? 'disabled' :'' }} " >Edit</a>
                         <form class="d-inline" method="POST" action="{{ route('category.destroy',$category->id) }}">
                           @csrf
                           @method('DELETE')
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger" {{ $category->name =='Uncategorized' ? 'disabled':'' }} >Delete</button>
                         </form>
                       </td>
                     </tr>

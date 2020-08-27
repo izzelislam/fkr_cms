@@ -25,7 +25,7 @@
                   <span>Role  </span><span class="ml-3">{{ $user->role }}</span>
                 </div>
                 <div class="my-5">
-                  <a href="" class="btn btn-sm btn-primary">Kembali</a>
+                  <a href="" class="btn btn-sm btn-primary mr-4">Kembali</a> <a href="" class="btn btn-sm btn-primary">Edit</a>
                 </div>
               </div>
             </div>

@@ -25,7 +25,7 @@
 		                <tr>
 		                  <td>{{ $loop->iteration }}</td>
 		                  <td>{{ $category->title }}</td>
-		                  <td>{{ $category->Category->name }}</td>
+		                  <td>{{ $category->Category['name'] }}</td>
 		                  <td>{{ $category->User->name }}</td>
 		                  <td>{{ $category->created_at->format('Y-m-d') }}</td>
 		                  <td>

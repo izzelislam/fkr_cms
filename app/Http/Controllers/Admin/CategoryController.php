@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Category;
+use App\Model\Article;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -78,7 +80,24 @@ class CategoryController extends Controller
         // $this->model->find($id)->delete();
 
         $model=$this->model->find($id);
-        $this->removeIage($model->photo);
+        // $this->removeIage($model->photo);
+        if (isset($model)) {
+            $articles=Article::where('category_id',$id)->get();
+            $defaultCategory=$this->model->where('name','Uncategorized')->pluck('id');
+            $dc=$defaultCategory->first();
+  
+            foreach ($articles as $article) {
+                $article->user_id=$article->user_id;
+                $article->category_id=$dc;
+                $article->title=$article->title;
+                $article->content=$article->content;
+                $article->image_file=$article->image_file;
+                $article->slug=Str::slug($article->title);
+
+                $article->save();
+            }
+        }
+
         $model->delete();
         return redirect('/admin/category');
     }
@@ -105,4 +124,18 @@ class CategoryController extends Controller
             unlink($fullpath);
         }
     }
+
+    // public function defaultCategory($id)
+    // {
+    //     $ck=Article::where('category_id',$id)-pluck('category_id')->get();
+        
+    //     if (isset($cek)) {
+    //         foreach ($ck as $cek) {
+    //             $cek['category_id']=6;
+    //         $cek->update();
+                
+    //         }
+
+    //     }
+    // }
 }
